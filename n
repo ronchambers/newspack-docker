@@ -93,6 +93,7 @@ case $1 in
         docker exec -it newspack_dev /bin/bash
         ;;
     cd-install)
+        # did not work for me...I added by hand.
         echo "This will install the ncd command in your system. Please inform the file you want to add this to (e.g. .bashrc)"
         read -e -p "> $HOME/" file
         target="$HOME/$file"
@@ -219,6 +220,18 @@ case $1 in
         fi
         cd ..
         done
+        ;;
+    gitstatusall)
+        for dir in repos/*/; do
+            echo -e "\n-------------------\n"
+            echo $dir
+            git -C ${dir} status
+        done
+        ;;
+    git)
+        require_target_folder
+        command="git -C /newspack-repos/$target_folder ${@:2}"
+        docker exec -it $USER_COMMAND newspack_dev sh -c "$command"
         ;;
     branch)
         switch_all_repos_to_branch $2
