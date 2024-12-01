@@ -156,6 +156,15 @@ case $1 in
     sites-drop)
         docker exec -it newspack_dev sh -c "/var/scripts/sites-drop.sh ${@:2}"
         ;;
+    sites-mig-conf)
+        docker exec -it newspack_dev sh -c "/var/scripts/sites-migration-config.sh $2"
+        ;;
+    sites-mig-db)
+        docker exec -it newspack_dev sh -c "/var/scripts/sites-migration-db.sh $2"
+        ;;
+    sites-mig-plugins)
+        docker exec -it newspack_dev sh -c "/var/scripts/sites-migration-plugins.sh $2"
+        ;;
     build)
         if [[ -n "$2" ]]; then
             target_folder=$2

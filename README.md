@@ -328,3 +328,11 @@ A certificate will be generated, so HTTPS is available immediately. However, the
 - `$ docker exec newspack_dev bash -c 'eval cat $(mkcert -CAROOT)/rootCA.pem' > rootCA.pem` to copy the CA certificate from the Docker machine
 - `$ sudo security add-trusted-cert -d -r trustRoot -k "/Library/Keychains/System.keychain" ./rootCA.pem` to trust this CA certificate (import to KeyChain). Alternatively, double-click on the .pem file.
 - remove the `rootCA.pem`, it's no longer needed
+
+## Convert to migration site
+
+- create additional site
+- convert config: `n sites-mig-conf $site_name`
+- import staging db
+- adjust db values: `n sites-mig-db $site_name`
+- adjust plugins: `n sites-mig-plugins $site_name`

@@ -3,9 +3,11 @@
 newspack_plugins=(
 	# "newspack-ads"
 	# "newspack-blocks"
+	"newspack-custom-content-migrator"
 	# "newspack-listings"
 	# "newspack-manager"
 	# "newspack-manager-client"
+	"newspack-migration-tools"
 	# "newspack-multibranded-site"
 	# "newspack-network"
 	# "newspack-newsletters"
