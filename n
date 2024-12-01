@@ -222,6 +222,9 @@ case $1 in
         done
         ;;
     gitstatusall)
+        echo -e "\n-------------------\n"
+        echo ${NABSPATH}
+        git -C ${NABSPATH} status
         for dir in repos/*/; do
             echo -e "\n-------------------\n"
             echo $dir
