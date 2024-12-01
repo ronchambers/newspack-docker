@@ -1,19 +1,19 @@
 #!/bin/bash
 
 newspack_plugins=(
-	"newspack-ads"
-	"newspack-blocks"
-	"newspack-listings"
-	"newspack-manager"
-	"newspack-manager-client"
-	"newspack-multibranded-site"
-	"newspack-network"
-	"newspack-newsletters"
+	# "newspack-ads"
+	# "newspack-blocks"
+	# "newspack-listings"
+	# "newspack-manager"
+	# "newspack-manager-client"
+	# "newspack-multibranded-site"
+	# "newspack-network"
+	# "newspack-newsletters"
 	"newspack-plugin"
-	"newspack-popups"
-	"newspack-sponsors"
-	"republication-tracker-tool"
-	"super-cool-ad-inserter-plugin"
+	# "newspack-popups"
+	# "newspack-sponsors"
+	# "republication-tracker-tool"
+	# "super-cool-ad-inserter-plugin"
 )
 
 newspack_themes=(
