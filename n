@@ -245,18 +245,19 @@ case $1 in
         echo -e "\n-------------------\n"
         echo ${NABSPATH}
         git -C ${NABSPATH} status
+        echo -e "\n-------------------\n"
         # repos
         for dir in ${NABSPATH}/repos/*/; do
-            echo -e "\n-------------------\n"
             echo $dir
             git -C ${dir} status
+            echo -e "\n-------------------\n"
         done
         # sites
         for dir in ${NABSPATH}/additional-sites-html/*; do
             if [ -d "$dir" ]; then
-                echo -e "\n-------------------\n"
                 echo $dir
                 git -C ${dir} status
+                echo -e "\n-------------------\n"
             fi
         done
         ;;
