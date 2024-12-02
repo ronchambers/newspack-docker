@@ -124,6 +124,11 @@ case $1 in
     tail)
         tail -f $current_site_relative_path/wp-content/debug.log
         ;;
+    cat-clean)
+        perl -i -ne 'print unless /_load_textdomain_just_in_time/' $current_site_relative_path/wp-content/debug.log
+        cat $current_site_relative_path/wp-content/debug.log
+        cat $current_site_relative_path/wp-content/debug.log | wc -l
+        ;;
     wp)
         cmd="wp --allow-root $path_param ${@:2}"
         docker exec -it $USER_COMMAND newspack_dev $cmd
