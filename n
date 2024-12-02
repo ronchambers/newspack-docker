@@ -230,7 +230,13 @@ case $1 in
         cd ..
         done
         ;;
-    gitstatusall)
+    git)
+        require_target_folder
+        command="git -C /newspack-repos/$target_folder ${@:2}"
+        docker exec -it $USER_COMMAND newspack_dev sh -c "$command"
+        ;;
+    gsa)
+        # git status all
         echo -e "\n-------------------\n"
         echo ${NABSPATH}
         git -C ${NABSPATH} status
@@ -239,11 +245,6 @@ case $1 in
             echo $dir
             git -C ${dir} status
         done
-        ;;
-    git)
-        require_target_folder
-        command="git -C /newspack-repos/$target_folder ${@:2}"
-        docker exec -it $USER_COMMAND newspack_dev sh -c "$command"
         ;;
     branch)
         switch_all_repos_to_branch $2
