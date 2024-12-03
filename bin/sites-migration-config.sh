@@ -25,6 +25,7 @@ wp --allow-root --path=${WP_PATH} --skip-plugins --skip-themes config set WP_DEB
 wp --allow-root --path=${WP_PATH} --skip-plugins --skip-themes config set WP_DEBUG_LOG true --raw --type=constant
 wp --allow-root --path=${WP_PATH} --skip-plugins --skip-themes config set WP_ENVIRONMENT_TYPE "local" --type=constant
 wp --allow-root --path=${WP_PATH} --skip-plugins --skip-themes config set SCRIPT_DEBUG true --raw --type=constant
+wp --allow-root --path=${WP_PATH} --skip-plugins --skip-themes config set NEWSPACK_ENABLE_CAP_GUEST_AUTHORS true --raw --type=constant
 
 # remove cache:
 rm $WP_PATH/wp-content/object-cache.php
