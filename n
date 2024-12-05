@@ -260,6 +260,11 @@ case $1 in
                 echo -e "\n-------------------\n"
             fi
         done
+        # dev
+        dir="${NABSPATH}/repos/newspack-custom-content-migrator/dev/newspack-migration-tools"
+        echo $dir
+        git -C ${dir} status
+        echo -e "\n-------------------\n"
         ;;
     branch)
         switch_all_repos_to_branch $2
