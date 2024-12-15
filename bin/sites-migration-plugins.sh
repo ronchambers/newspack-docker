@@ -27,7 +27,7 @@ else
 fi
 wp --allow-root --path=${WP_PATH} plugin activate "as-disable-default-runner"
 
-wp --allow-root --path=${WP_PATH} plugin activate "newspack-plugin"
+# wp --allow-root --path=${WP_PATH} plugin activate "newspack-plugin"
 
 # cap
 # wp --allow-root --path=${WP_PATH} plugin install co-authors-plus --version=3.6.3
