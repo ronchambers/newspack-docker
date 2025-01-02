@@ -170,6 +170,9 @@ case $1 in
     sites-mig-plugins)
         docker exec -it newspack_dev sh -c "/var/scripts/sites-migration-plugins.sh $2"
         ;;
+    sites-xdebug)
+        docker exec -it newspack_dev sh -c "/var/scripts/sites-xdebug.sh $2"
+        ;;
     build)
         if [[ -n "$2" ]]; then
             target_folder=$2
