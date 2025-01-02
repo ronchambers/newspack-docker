@@ -171,7 +171,7 @@ case $1 in
         docker exec -it newspack_dev sh -c "/var/scripts/sites-migration-plugins.sh $2"
         ;;
     sites-stop-updates)
-        docker exec -it newspack_dev sh -c "/var/scripts/stop-updates.sh $2"
+        docker exec -it newspack_dev sh -c "/var/scripts/sites-stop-updates.sh $2"
         ;;
     sites-xdebug)
         docker exec -it newspack_dev sh -c "/var/scripts/sites-xdebug.sh $2"
