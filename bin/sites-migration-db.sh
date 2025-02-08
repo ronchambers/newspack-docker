@@ -19,10 +19,13 @@ echo "Running for ${WP_PATH}"
 wp --allow-root --path=${WP_PATH} --skip-plugins --skip-themes option update home "https://${name}.local"
 wp --allow-root --path=${WP_PATH} --skip-plugins --skip-themes option update siteurl "https://${name}.local"
 
+# admin email
+wp --allow-root --path=${WP_PATH} --skip-plugins --skip-themes option update admin_email ${WP_ADMIN_EMAIL}
+
 # remove all plugins
 wp --allow-root --path=${WP_PATH} --skip-plugins --skip-themes option delete active_plugins
 
 # user pass
-wp --allow-root --path=${WP_PATH} --skip-plugins --skip-themes user update "adminnewspack" --user_pass="test"
+wp --allow-root --path=${WP_PATH} --skip-plugins --skip-themes user update "adminnewspack" --user_pass="test" --user_email=${WP_ADMIN_EMAIL}
 
 
