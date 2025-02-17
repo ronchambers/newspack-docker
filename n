@@ -167,9 +167,6 @@ case $1 in
     sites-mig-db)
         docker exec -it newspack_dev sh -c "/var/scripts/sites-migration-db.sh $2"
         ;;
-    sites-mig-plugins)
-        docker exec -it newspack_dev sh -c "/var/scripts/sites-migration-plugins.sh $2"
-        ;;
     sites-stop-updates)
         docker exec -it newspack_dev sh -c "/var/scripts/sites-stop-updates.sh $2"
         ;;

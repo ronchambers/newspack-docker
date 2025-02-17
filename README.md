@@ -331,9 +331,10 @@ A certificate will be generated, so HTTPS is available immediately. However, the
 
 ## Convert to migration site
 
-- create additional site
-- convert config: `n sites-mig-conf $site_name`
+- `n sites-add $site_name`
+- `n sites-mig-conf $site_name`
+- `n sites-xdebug $site_name`
+- `n sites-stop-updates $site_name`
 - drop existing tables in db
 - import staging db
 - adjust db values: `n sites-mig-db $site_name`
-- adjust plugins: `n sites-mig-plugins $site_name`
