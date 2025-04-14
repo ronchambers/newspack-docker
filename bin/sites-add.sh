@@ -18,6 +18,13 @@ if [ ! -d "/var/www/additional-sites-html/$name" ]; then
     echo
     echo "Site $name created!. Open ${name}.local"
     echo
+
+    # local git.
+    git -C "/var/www/additional-sites-html/$name" init 
+    git -C "/var/www/additional-sites-html/$name" config --global --add safe.directory "/var/www/additional-sites-html/$name"
+    git -C "/var/www/additional-sites-html/$name" add .
+    git -C "/var/www/additional-sites-html/$name" commit -m 'init'
+
 else
     echo
     echo "Site $name already exists!"
