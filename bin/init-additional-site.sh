@@ -34,10 +34,11 @@ if [ ! -f "/var/www/additional-sites-html/$SITE_NAME/wp-config.php" ]; then
 	wp config set WP_DEBUG_LOG true --raw --type=constant
 	wp config set WP_DEBUG_DISPLAY false --raw --type=constant
 	wp config set SCRIPT_DEBUG true --raw --type=constant
-	wp config set WP_AUTO_UPDATE_CORE true --raw --type=constant
+	wp config set WP_AUTO_UPDATE_CORE false --raw --type=constant
 	wp config set AUTOMATIC_UPDATER_DISABLED true --raw --type=constant
 	wp config set WP_ENVIRONMENT_TYPE local --type=constant
-	wp config set WP_CACHE true --type=constant
+	wp config set WP_CACHE false --type=constant
+	wp config set DISABLE_WP_CRON true --raw --type=constant
 
 fi
 
@@ -50,5 +51,16 @@ fi
 mkdir -p "/var/www/additional-sites-html/$SITE_NAME/wp-content/mu-plugins"
 cp /var/scripts/newspack-docker-mu.php "/var/www/additional-sites-html/$SITE_NAME/wp-content/mu-plugins"
 
+# MU Plugin: stop auto-ajax that interfere with debugging.
+cp /var/scripts/as-disable-default-runner.php "/var/www/additional-sites-html/$SITE_NAME/wp-content/mu-plugins" 
+cp /var/scripts/wp-plugin-helper-no-heartbeat.php "/var/www/additional-sites-html/$SITE_NAME/wp-content/mu-plugins"
+
+# MU Plugin: stop auto updates
+cp /var/scripts/wp-plugin-stop-updates.php "/var/www/additional-sites-html/$SITE_NAME/wp-content/mu-plugins"
+
+# stop favicon.ico interuption in xdebug.
+cp /var/scripts/img/favicon.ico "/var/www/additional-sites-html/$SITE_NAME/"
+
 # link plugins and themes
-/var/scripts/link-repos.sh "/var/www/additional-sites-html/$SITE_NAME/wp-content"
+# /var/scripts/link-repos.sh "/var/www/additional-sites-html/$SITE_NAME/wp-content"
+

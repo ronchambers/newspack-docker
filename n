@@ -148,12 +148,11 @@ case $1 in
         ;;
     sites-add)
         docker exec -it newspack_dev sh -c "/var/scripts/sites-add.sh $2"
-        read -p "Do you want to add this domain to your local hosts file? (Y/n): " choice
-        choice=${choice,,}
-        if [[ "$choice" != "n" ]]; then
-            echo "127.0.0.1 $2.local" | sudo tee -a /etc/hosts
-        fi
-
+        # read -p "Do you want to add this domain to your local hosts file? (Y/n): " choice
+        # choice=${choice,,}
+        # if [[ "$choice" != "n" ]]; then
+        #     echo "127.0.0.1 $2.local" | sudo tee -a /etc/hosts
+        # fi
         ;;
     sites-list)
         docker exec -it newspack_dev sh -c "/var/scripts/sites-list.sh ${@:2}"
@@ -161,17 +160,8 @@ case $1 in
     sites-drop)
         docker exec -it newspack_dev sh -c "/var/scripts/sites-drop.sh ${@:2}"
         ;;
-    sites-mig-conf)
-        docker exec -it newspack_dev sh -c "/var/scripts/sites-migration-config.sh $2"
-        ;;
     sites-mig-db)
         docker exec -it newspack_dev sh -c "/var/scripts/sites-migration-db.sh $2"
-        ;;
-    sites-stop-updates)
-        docker exec -it newspack_dev sh -c "/var/scripts/sites-stop-updates.sh $2"
-        ;;
-    sites-xdebug)
-        docker exec -it newspack_dev sh -c "/var/scripts/sites-xdebug.sh $2"
         ;;
     build)
         if [[ -n "$2" ]]; then
