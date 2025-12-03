@@ -259,6 +259,13 @@ case $1 in
         git -C ${dir} status
         echo -e "\n-------------------\n"
         ;;
+    gsafe)
+        for i in {0..19}; do
+            command="git config --global --add safe.directory /var/www/additional-sites-html/npd${i}"
+            echo $command
+            docker exec -it newspack_dev sh -c "${command}"
+        done
+        ;;
     branch)
         switch_all_repos_to_branch $2
         ;;
