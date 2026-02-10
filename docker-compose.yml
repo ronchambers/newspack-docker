@@ -38,8 +38,12 @@ services:
     platform: linux/arm64
     depends_on:
       - db
-    image: newspack-dev-81:latest
+    # image: newspack-dev-81:latest
+    image: newspack-dev-83-v2:latest
     volumes:
+      # php 8.3: xdebug on. this was actually done with a REBUILD: newspack-dev-83-v2
+      # php 8.3: additional sites need SSL port.
+      - ./config/apache_additional_sites:/etc/apache2/sites-available/002-additional.conf
       - ./logs/newspack-dev/apache2/:/var/log/apache2
       - ./logs/newspack-dev/php:/var/log/php
       - ./bin:/var/scripts
