@@ -52,6 +52,7 @@ services:
       - ./manager-html:/var/www/manager-html
       - ./additional-sites-html:/var/www/additional-sites-html
       - ./snapshots:/snapshots
+      - ./container-tmp:/tmp
     ports:
       - "${PORT_WORDPRESS:-80}:80"
       - "${PORT_WORDPRESS:-443}:443"
