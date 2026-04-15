@@ -260,7 +260,7 @@ case $1 in
         echo -e "\n-------------------\n"
         ;;
     gsafe)
-        for i in {0..19}; do
+        for i in {0..29}; do
             command="git config --global --add safe.directory /var/www/additional-sites-html/npd${i}"
             echo $command
             docker exec -it newspack_dev sh -c "${command}"
