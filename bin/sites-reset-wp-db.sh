@@ -27,3 +27,8 @@ wp --allow-root --path=${WP_PATH} core install \
 	--admin_email=${WP_ADMIN_EMAIL} \
 	--skip-email
 
+# remove sample data.
+wp --allow-root --path=${WP_PATH} post delete $(wp --allow-root --path=${WP_PATH} post list --post_type=post,page,wp_navigation --format=ids) --force
+
+# comments will be delete above when post is deleted.
+# wp --allow-root --path=${WP_PATH} comment delete $(wp --allow-root --path=${WP_PATH} comment list --format=ids) --force
