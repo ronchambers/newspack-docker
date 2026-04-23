@@ -163,6 +163,9 @@ case $1 in
     sites-mig-db)
         docker exec -it newspack_dev sh -c "/var/scripts/sites-migration-db.sh $2"
         ;;
+    sites-reset-wp-db)
+        docker exec -it newspack_dev sh -c "/var/scripts/sites-reset-wp-db.sh $2"
+        ;;
     build)
         if [[ -n "$2" ]]; then
             target_folder=$2

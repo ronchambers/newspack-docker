@@ -52,7 +52,8 @@ services:
       - ./manager-html:/var/www/manager-html
       - ./additional-sites-html:/var/www/additional-sites-html
       - ./snapshots:/snapshots
-      - ./container-tmp:/tmp
+      # use this when doing PHPUnit xDebug. Do not keep, otherwise docker will not empty /tmp/ on stop.
+      # - ./container-tmp:/tmp
     ports:
       - "${PORT_WORDPRESS:-80}:80"
       - "${PORT_WORDPRESS:-443}:443"
