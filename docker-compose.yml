@@ -53,6 +53,10 @@ services:
       - ./additional-sites-html:/var/www/additional-sites-html
       - ./snapshots:/snapshots
       # use this when doing PHPUnit xDebug. Do not keep, otherwise docker will not empty /tmp/ on stop.
+      # this can also be used as a way to run adhoc PHP code from my local machine.
+      # make the directory before starting docker: mkdir container-tmp
+      # copy my local PHP file into this folder.  start docker.  run my code in the container in the /tmp/ folder.
+      # stop docker, delete local directory, comment out the next line, then restart docker to verify /tmp/ is empty.
       # - ./container-tmp:/tmp
     ports:
       - "${PORT_WORDPRESS:-80}:80"

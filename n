@@ -237,30 +237,31 @@ case $1 in
         docker exec -it $USER_COMMAND newspack_dev sh -c "$command"
         ;;
     gsa)
-        # git status all
-        echo -e "\n-------------------\n"
-        echo ${NABSPATH}
-        git -C ${NABSPATH} status
-        echo -e "\n-------------------\n"
-        # repos
-        for dir in ${NABSPATH}/repos/*/; do
-            echo $dir
-            git -C ${dir} status
-            echo -e "\n-------------------\n"
-        done
+        if [[ -z "$2" ]]; then
+            echo "Site id arg is required"
+        	exit 1
+        fi
+        plugins_dir_path=${NABSPATH}/additional-sites-html/${2}-plugins;
+        echo -e "\n\n   -- start here --\n\n"
+        if [[ ! -d "$plugins_dir_path" ]]; then
+            echo "Plugins folder does not exist."
+            exit 1
+        fi
         # sites
-        for dir in ${NABSPATH}/additional-sites-html/*; do
-            if [ -d "$dir" ]; then
+        for dir in ${plugins_dir_path}/*; do
+            if [ -d "${dir}" ]; then
+                echo -e "-------------------\n"
                 echo $dir
+                # check for .git (could be a folder or file)
+                if [ ! -e "${dir}/.git" ]; then
+                    echo -e "    NOT A REPO!     \n\n";
+                    continue
+                fi
                 git -C ${dir} status
-                echo -e "\n-------------------\n"
+                # git -C ${dir} config --list --local --show-origin
+                echo -e "\n"
             fi
         done
-        # dev
-        dir="${NABSPATH}/repos/newspack-custom-content-migrator/dev/newspack-migration-tools"
-        echo $dir
-        git -C ${dir} status
-        echo -e "\n-------------------\n"
         ;;
     gsafe)
         for i in {0..29}; do
