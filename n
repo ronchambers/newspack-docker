@@ -258,6 +258,7 @@ case $1 in
                     continue
                 fi
                 git -C ${dir} status
+                git -C ${dir} log -n 3
                 # git -C ${dir} config --list --local --show-origin
                 echo -e "\n"
             fi
